@@ -1,79 +1,38 @@
-" NeoBundle Scripts-----------------------------
-if has('vim_starting')
-    set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
-    set runtimepath+=~/.config/nvim/
-endif
-
-let neobundle_readme=expand('~/.config/nvim/bundle/neobundle.vim/README.md')
-
-if !filereadable(neobundle_readme)
-    echo "Installing NeoBundle..."
-    echo ""
-    silent !mkdir -p ~/.config/nvim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim/
-    let g:not_finsh_neobundle = "yes"
-endif
-
-call neobundle#begin(expand('$HOME/.config/nvim/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" ------------------------------------
-"  Navigation
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'ctrlpvim/ctrlp.vim'
+" Plugins setup
+call plug#begin(expand('$HOME/.config/nvim/bundle'))
+" Navigation
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ctrlpvim/ctrlp.vim'
 
 "  Formatting
-NeoBundle 'Chiel92/vim-autoformat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tomtom/tcomment_vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
-"  Languages and frameworks
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'keith/swift.vim'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'udalov/kotlin-vim'
-
-NeoBundle 'Shougo/deoplete.nvim'
-NeoBundle 'mitsuse/autocomplete-swift'
-NeoBundle 'ms-jpq/coq_nvim'
-NeoBundle 'neovim/nvim-lspconfig'
-
-NeoBundle 'pangloss/vim-javascript'
+" Code completion
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
 "  Themes
-NeoBundle 'bling/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'dracula/vim'
-NeoBundle 'folke/tokyonight.nvim'
-NeoBundle 'NLKNguyen/papercolor-theme'
-NeoBundle 'morhetz/gruvbox'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'folke/tokyonight.nvim'
+Plug 'morhetz/gruvbox'
 
-" ------------------------------------
-call neobundle#end()
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+call plug#end()
 
 " Basic
 syntax on
 set encoding=utf-8
 set nocompatible
 
-" Beeps are evil!
+" Turn off bells
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " Style
-" colorscheme dracula
-" colorscheme tokyonight
+set termguicolors
 colorscheme gruvbox
-
-set t_Co=256
-set background=light
-" colorscheme PaperColor
 
 set relativenumber
 set autoread
@@ -102,12 +61,10 @@ set hlsearch
 set incsearch
 set ignorecase
 
-"====================
 " Mappings
 let mapleader = "\\"
 nnoremap <Leader><Leader> :noh<return>
 vmap <C-c> :w !pbcopy<CR><CR>
-noremap <Leader>= :Autoformat<CR>
 "" Exit terminal
 tnoremap <Esc> <C-\><C-n>
 
@@ -117,8 +74,14 @@ nnoremap <C-j> <C-w>-
 nnoremap <C-l> <C-w><
 nnoremap <C-h> <C-w>>
 
-" Nerd tree
-map <C-n> :NERDTreeToggle<CR>
+" Tree view
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+
+lua << EOF
+require'nvim-tree'.setup { }
+EOF
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -145,8 +108,7 @@ au BufRead,BufNewFile Podfile setfiletype ruby
 au BufRead,BufNewFile Fastfile setfiletype ruby
 au BufRead,BufNewFile Appfile setfiletype ruby
 
-"================ Vim indent guides ==============
-
+" Indent guides
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black   ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=237
@@ -154,6 +116,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=237
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
+" Trailing whitespaces
 func! DeleteTrailingWS()
     exe "normal mz"
     %s/\s\+$//ge
@@ -161,8 +124,4 @@ func! DeleteTrailingWS()
 endfunc
 
 autocmd BufWrite *.m,*.h,*.py,*.rb,*.swift,*.c,*.js :call DeleteTrailingWS()
-
-let g:snipMate = {}
-let g:snipMate.scope_aliases = {}
-let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails'
 
