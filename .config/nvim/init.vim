@@ -22,6 +22,7 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'folke/tokyonight.nvim'
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
@@ -36,7 +37,7 @@ autocmd GUIEnter * set visualbell t_vb=
 
 " Style
 set termguicolors
-colorscheme gruvbox
+colorscheme onedark
 
 set relativenumber
 set autoread
@@ -49,13 +50,13 @@ set backspace
 set shiftround
 set smarttab
 set expandtab
+
 set autoindent
 set smartindent
-
-set et
-set nowrap
-set scrolloff=3
+set wrap
 set laststatus=2
+set expandtab
+set scrolloff=3
 set colorcolumn=120
 set hidden
 
@@ -72,18 +73,17 @@ vmap <C-c> :w !pbcopy<CR><CR>
 "" Exit terminal
 tnoremap <Esc> <C-\><C-n>
 
-" Resize splits
-nnoremap <C-k> <C-w>+
-nnoremap <C-j> <C-w>-
-nnoremap <C-l> <C-w><
-nnoremap <C-h> <C-w>>
+" Spell check
+nmap <silent> <leader>s :set spell!<CR>
 
-" Tree view
+" Navigation --------------------
+
+"" Tree view
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
-" Telescope
+"" Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
@@ -91,9 +91,22 @@ lua << EOF
 require'nvim-tree'.setup { }
 EOF
 
+"" Panels switch
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap <Leader>v :vsplit<enter>
+nnoremap <Leader>s :split<enter>
+
+nnoremap <S-h> 0
+nnoremap <S-l> $
+
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'murmur'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='onedark'
 
 " YCM
 let g:ycm_min_num_of_chars_for_completion = 0
