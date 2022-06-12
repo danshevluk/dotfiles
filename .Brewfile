@@ -2,6 +2,7 @@ brew "neovim"
 brew "diff-so-fancy"
 brew "git-lfs"
 brew "rbenv"
+brew "ripgrep"
 
 # Apps 
 cask "firefox"

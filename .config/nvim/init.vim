@@ -6,6 +6,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'nvim-lua/plenary.nvim'
+Plug 'BurntSushi/ripgrep'
 Plug 'nvim-telescope/telescope.nvim'
 
 "  Formatting
@@ -83,8 +84,8 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 " Telescope
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
 lua << EOF
 require'nvim-tree'.setup { }
