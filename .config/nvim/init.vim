@@ -5,6 +5,9 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 "  Formatting
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -78,6 +81,10 @@ nnoremap <C-h> <C-w>>
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
+
+" Telescope
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope live_grep<cr>
 
 lua << EOF
 require'nvim-tree'.setup { }
