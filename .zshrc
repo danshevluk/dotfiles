@@ -32,7 +32,7 @@ export NVM_DIR="$HOME/.nvm"
 # Aliases
 alias vim=nvim
 alias be="bundle exec"
-alias fast="be fastlane"
+alias bfast="be fastlane"
 alias reactn="react-native"
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
