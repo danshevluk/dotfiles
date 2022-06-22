@@ -15,7 +15,7 @@ Plug 'tpope/vim-commentary'
 
 " Code completion
 Plug 'neovim/nvim-lspconfig'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "  Themes
 Plug 'bling/vim-airline'
@@ -66,6 +66,13 @@ set hlsearch
 set incsearch
 set ignorecase
 
+" Autocomplete
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=number
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
 " Mappings
 let mapleader = "\\"
 nnoremap <Leader><Leader> :noh<return>
@@ -74,7 +81,9 @@ vmap <C-c> :w !pbcopy<CR><CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Spell check
-nmap <silent> <leader>s :set spell!<CR>
+" nmap <silent> <leader>s :set spell!<CR>
+
+inoremap <silent><expr> <Leader>l coc#refresh()
 
 " Navigation --------------------
 
@@ -84,8 +93,8 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 "" Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <Leader>ff <cmd>Telescope find_files<cr>
+nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
 
 lua << EOF
 require'nvim-tree'.setup { }
