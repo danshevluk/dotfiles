@@ -14,13 +14,15 @@ source $ZSH/oh-my-zsh.sh
 # Open in Xcode
 function xc {
   xcode_proj=`find . -name "*.xc*" -d 1 | sort -r | head -1`
+  package_path="Package.swift"
 
-  if [[ `echo -n $xcode_proj | wc -m` == 0 ]]
-  then
-    echo "No xcworkspace/xcodeproj file found in the current directory."
-  else
+  if [[ -f $package_path ]]; then
+    open -a "Xcode" "."
+  elif [[ `echo -n $xcode_proj | wc -m` != 0 ]]; then
     echo "Found $xcode_proj"
     open "$xcode_proj"
+  else
+    echo "No xcworkspace/xcodeproj/Package.swift file found in the current directory."
   fi
 }
 
