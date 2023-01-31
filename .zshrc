@@ -7,7 +7,7 @@ eval "$(rbenv init -)"
 
 CASE_SENSITIVE="true"
 
-plugins=(git dash zsh-autosuggestions sudo history ssh-agent)
+plugins=(git dash zsh-autosuggestions sudo history ssh-agent swiftpm)
 
 source $ZSH/oh-my-zsh.sh
 
