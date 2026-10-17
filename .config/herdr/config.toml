@@ -1,0 +1,25 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+space"
+
+# Pane management
+close_pane = "prefix+w"
+split_horizontal = "prefix+s"
+split_vertical = "prefix+v"
+
+# Workspace navigation
+goto = "prefix+p"              # was prefix+g
+workspace_picker = "prefix+o"  # was prefix+w
+new_workspace = "prefix+n"     # was prefix+shift+n
+
+# Agent navigation
+previous_agent = "prefix+["
+next_agent = "prefix+]"
+
+# Moved off keys that are now taken by the bindings above
+previous_tab = "prefix+comma" # was prefix+p
+next_tab = "prefix+period"    # was prefix+n
+settings = "prefix+shift+s"   # was prefix+s
+copy_mode = "prefix+y"        # was prefix+[, now previous_agent
+open_notification_target = "prefix+a" # was prefix+o
