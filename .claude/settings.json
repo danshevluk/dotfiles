@@ -1,0 +1,58 @@
+{
+  "model": "opus",
+  "attribution": {
+    "commit": ""
+  },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true,
+    "swiftui-pro@swiftui-agent-skill": true,
+    "code-quality@agtk": true,
+    "swift@agtk": true,
+    "plannotator@plannotator": true,
+    "figma@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "swiftui-agent-skill": {
+      "source": {
+        "source": "github",
+        "repo": "twostraws/SwiftUI-Agent-Skill"
+      }
+    },
+    "agtk": {
+      "source": {
+        "source": "github",
+        "repo": "danshevluk/agtk"
+      }
+    },
+    "plannotator": {
+      "source": {
+        "source": "github",
+        "repo": "backnotprop/plannotator"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-sonnet-5": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "tui": "fullscreen",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "theme": "dark",
+  "preferredNotifChannel": "ghostty",
+  "agentPushNotifEnabled": true,
+  "voiceEnabled": true
+}

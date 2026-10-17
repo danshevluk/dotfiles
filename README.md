@@ -52,6 +52,7 @@ changes the file here, and `git status` shows it.
 | `.config/mise/config.toml` | [mise](https://mise.jdx.dev) global tool versions (go, node, …) |
 | `.config/nvim` | Neovim ([LazyVim](https://lazyvim.github.io)), whole directory |
 | `.config/zed/settings.json` | Zed settings |
+| `.claude/settings.json` | Claude Code user settings (model, plugins, UI) |
 
 mise refuses to load a config that lives outside `~/.config/mise` until it's
 trusted, so `install.sh` also runs `mise trust` on the linked file.

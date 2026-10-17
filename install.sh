@@ -23,6 +23,7 @@ LINKS=(
   .config/mise/config.toml
   .config/nvim
   .config/zed/settings.json
+  .claude/settings.json
 )
 
 run() {
