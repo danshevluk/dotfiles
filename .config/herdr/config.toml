@@ -1,12 +1,5 @@
 onboarding = false
 
-# ─────────────────────────────────────────────────────────────
-#  ✦ NEON DRIVE ✦  — a synthwave theme for herdr
-#  Hot pink accents, cyan highlights, sunset yellows on deep purple.
-#  Revert: copy a config.toml.bak-* over this file, then
-#  `herdr server reload-config`.
-# ─────────────────────────────────────────────────────────────
-
 [theme]
 name = "tokyo-night"          # dark base; everything below paints over it
 auto_switch = false
