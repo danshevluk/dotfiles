@@ -1,25 +1,98 @@
 onboarding = false
 
+# ─────────────────────────────────────────────────────────────
+#  ✦ NEON DRIVE ✦  — a synthwave theme for herdr
+#  Hot pink accents, cyan highlights, sunset yellows on deep purple.
+#  Revert: copy a config.toml.bak-* over this file, then
+#  `herdr server reload-config`.
+# ─────────────────────────────────────────────────────────────
+
+[theme]
+name = "tokyo-night"          # dark base; everything below paints over it
+auto_switch = false
+
+[theme.custom]
+accent        = "#ff7edb"     # hot pink: borders, focus, highlights
+sidebar_bg    = "#1a1428"     # deep night purple
+active_row_bg = "#3a2357"     # glowing violet for the active row
+selection_bg  = "#4b2a6b"     # navigate-mode cursor
+panel_bg      = "#241b2f"     # popups / panels
+surface0      = "#2a2139"
+surface1      = "#34294f"
+surface_dim   = "#1e1730"
+overlay0      = "#6d5a8f"
+overlay1      = "#8b7bb0"
+text          = "#f6f0ff"
+subtext0      = "#b6a9d6"
+mauve         = "#c792ea"
+green         = "#72f1b8"     # done — mint neon
+yellow        = "#fede5d"     # sunset yellow
+red           = "#fe4450"     # blocked — laser red
+blue          = "#36f9f6"     # working — electric cyan
+teal          = "#2de2e6"
+peach         = "#ff8b39"     # sunset orange
+
+[ui]
+status_indicators = "symbols"
+prompt_new_tab_name = false
+hide_tab_bar_when_single_tab = false
+show_agent_labels_on_pane_borders = true
+window_title = "✦ {workspace} · {tab}"
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "text", text = "▲▼▲" },
+  { type = "datetime", format = "%a %H:%M" },
+]
+tab_bar_right_separator = "  "
+
+[ui.sidebar.agents]
+row_gap = 1
+rows = [
+  [
+    "state_icon",
+    { token = "agent", fg = "#ff7edb", bold = true },
+    { token = "state_text", dim = true, rules = [
+      { equals = "working", fg = "#36f9f6", dim = false },
+      { equals = "blocked", fg = "#fe4450", bold = true, dim = false },
+      { equals = "done",    fg = "#72f1b8", dim = false },
+      { equals = "idle",    fg = "#8b7bb0" },
+    ] },
+  ],
+  [{ token = "terminal_title_stripped", fg = "#b6a9d6" }],
+  [{ token = "workspace", fg = "#fede5d" }, { token = "tab", fg = "#ff8b39" }],
+]
+
+[ui.sidebar.spaces]
+row_gap = 1
+rows = [
+  ["state_icon", { token = "workspace", fg = "#f6f0ff", bold = true }],
+  [{ token = "branch", fg = "#36f9f6" }, "git_status"],
+  [{ token = "state_text", fg = "#8b7bb0", dim = true, rules = [
+    { equals = "working", fg = "#36f9f6", dim = false },
+    { equals = "blocked", fg = "#fe4450", bold = true, dim = false },
+    { equals = "done",    fg = "#72f1b8", dim = false },
+    { equals = "unknown", hide = true },
+  ] }],
+]
+
+[ui.toast]
+delivery = "terminal"
+
+[ui.sound]
+enabled = true
+
 [keys]
-prefix = "ctrl+space"
-
-# Pane management
+prefix = "alt+space"
 close_pane = "prefix+w"
-split_horizontal = "prefix+s"
-split_vertical = "prefix+v"
-
-# Workspace navigation
-goto = "prefix+p"              # was prefix+g
-workspace_picker = "prefix+o"  # was prefix+w
-new_workspace = "prefix+n"     # was prefix+shift+n
-
-# Agent navigation
-previous_agent = "prefix+["
 next_agent = "prefix+]"
-
-# Moved off keys that are now taken by the bindings above
-previous_tab = "prefix+comma" # was prefix+p
-next_tab = "prefix+period"    # was prefix+n
-settings = "prefix+shift+s"   # was prefix+s
-copy_mode = "prefix+y"        # was prefix+[, now previous_agent
-open_notification_target = "prefix+a" # was prefix+o
+previous_agent = "prefix+["
+new_workspace = "prefix+n"
+goto = "prefix+p"
+workspace_picker = ""
+settings = "prefix+,"
+split_vertical = "prefix+v"
+split_horizontal = "prefix+s"
+new_tab = "prefix+t"
+close_tab = "prefix+shift+w"
+rename_workspace = "prefix+shift+e"
+close_workspace = "prefix+shift+q"
